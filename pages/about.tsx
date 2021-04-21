@@ -82,13 +82,13 @@ export default function About(props) {
   const objectives = [
     {
       title: "1.",
-      color: "green",
+      color: "yellow",
       description:
         "To ensure an increased accessibility and provision of socio-economic services for the less-privileged and the social excluded members of the society.",
     },
     {
       title: "2.",
-      color: "yellow",
+      color: "green",
       description:
         "To promote and advocate for the rights of children and support young people in building a just,democartic and inclusive society, enhancing human security and improving livelihood for the poor and excluded.",
     },
@@ -233,10 +233,10 @@ export default function About(props) {
         <p className="lg:hidden text-3xl font-extrabold text-green-dark tracking-tight sm:text-6xl font-header capitalize text-center pb-12 bg-gray-100">
             Our Objectives
           </p>
-        <div className="lg:w-1/2 relative h-full grid grid-cols-2 text-white">
+        <div className="lg:w-1/2 relative h-full grid grid-cols-1 lg:grid-cols-2 text-gray-700 divide-y divide-x">
           {objectives.map((item) => (
             <div
-              className={`h-full px-8 py-8 text-lg bg-${item.color}  flex flex-col space-y-4`}
+              className={`h-full px-8 py-8 text-lg flex flex-col space-y-4`}
               key={item.title}
             >
               <span className="text-6xl font-header">{item.title}</span>
