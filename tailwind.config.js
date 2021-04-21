@@ -17,9 +17,10 @@ module.exports = {
           light: "#76ED47",
           "semi-dark": "#459142",
         },
-        yellow: { dark: "#e48900", DEFAULT: "#f4c002", light: "#f4c001" },
+        yellow: { DEFAULT: "#f4c002", dark: "#e48900", light: "#f4c001" },
         "custom-black": "#191919",
         brown: "#3D2803",
+        test: "#fea82f",
       },
       // height: {
       //   6.87: "110px",

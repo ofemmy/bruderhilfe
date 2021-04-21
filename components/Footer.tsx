@@ -42,7 +42,7 @@ export function Footer() {
         Footer
       </h2>
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-6">
-        <div className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 xl:gap-x-8">
+        <div className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-8 xl:gap-x-16">
           <div className="text-white space-y-2 text-lg tracking-wide">
             <h2 className="uppercase font-bold font-header tracking-wider">
               Contact Bruder Hilfe

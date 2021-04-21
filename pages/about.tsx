@@ -94,13 +94,13 @@ export default function About(props) {
     },
     {
       title: "3.",
-      color: "yellow-dark",
+      color: "yellow",
       description:
         "To build the capacity and strengthen the ability of the less privileged and poor people mostly in rural areas to hold governments at all levels and corporate bodies accountable towards enhancing their access to quality services.",
     },
     {
       title: "4.",
-      color: "green-dark",
+      color: "green",
       description:
         "To improve and increase the literacy level of women, boys and girls in rural communities and put in place material and non-material facilities that will promote their safety and participation in public and private spaces.",
     },
@@ -114,7 +114,7 @@ export default function About(props) {
       <section className="relative h-96">
         <div className="absolute inset-0 h-full">
           <img
-            className="h-full w-full object-left-top object-cover"
+            className="h-full w-full object-top sm:object-left-top object-cover"
             src="team.jpeg"
           />
           <div
@@ -129,9 +129,9 @@ export default function About(props) {
         </h2> */}
       </section>
       <section className="relative bg-gray-50">
-        <div className="absolute inset-x-0 right-1/2 top-0 w-1/2 h-full bg-white"></div>
-        <div className="max-w-7xl mx-auto px-4 py-16 sm:px-6 font-body flex justify-center items-center h-full space-x-8">
-          <div className="w-1/2 relative h-full aspect-w-16 aspect-h-6 rounded-lg shadow-2xl overflow-hidden">
+        <div className="hidden md:absolute inset-x-0 right-1/2 top-0 w-1/2 h-full bg-white"></div>
+        <div className="max-w-7xl mx-auto px-4 py-16 sm:px-6 font-body flex justify-center items-center h-full md:space-x-8">
+          <div className="hidden lg:block w-1/2 relative h-full aspect-w-16 aspect-h-6 rounded-lg shadow-2xl overflow-hidden">
           
             <img
               className="h-full w-full object-cover"
@@ -140,7 +140,7 @@ export default function About(props) {
             />
          
           </div>
-          <div className="w-1/2 px-8">
+          <div className="lg:w-1/2 px-8">
             <p className="text-gray-900 mt-6 text-base">
               Bruderhilfe is a non-governmental organization duly registered
               with the Corporate Affairs Commission &#40;CAC&#41; in 2017.
@@ -163,11 +163,11 @@ export default function About(props) {
         </div>
       </section>
       <section className="relative bg-green">
-        <div className="max-w-7xl mx-auto px-4 py-24 sm:px-6 font-body h-full relative">
-          <ul className="grid grid-cols-3 gap-4 text-white">
+        <div className="max-w-7xl mx-auto px-4 py-16 lg:py-24 sm:px-6 font-body h-full relative">
+          <ul className="lg:grid grid-cols-3 gap-4 text-white">
             {interventionAreas.map((item) => (
               <li className="flex flex-col px-4 py-6">
-                <h3 className="text-4xl font-header uppercase tracking-wide">
+                <h3 className="text-3xl sm:text-4xl font-header uppercase tracking-wide">
                   {item.title}
                 </h3>
                 <p className="mt-6 text-lg">{item.body}</p>
@@ -178,7 +178,7 @@ export default function About(props) {
       </section>
       <section className="relative py-16 sm:py-24 bg-gray-100">
         <div className="max-w-7xl mx-auto px-4 text-center sm:px-6 h-full relative">
-          <p className="mt-2 text-3xl font-extrabold text-green-dark tracking-tight sm:text-6xl font-header">
+          <p className="mt-2 text-3xl font-extrabold text-green-dark tracking-tight sm:text-6xl font-header capitalize">
             Our core values
           </p>
           <div className="mt-12">
@@ -212,8 +212,8 @@ export default function About(props) {
           </div>
         </div>
       </section>
-      <section className="relative flex">
-        <div className="w-1/2 relative">
+      <section className="relative lg:flex">
+        <div className="hidden w-1/2 lg:block relative">
           <div className="absolute inset-0">
             <img
               src="objectives-new.jpeg"
@@ -230,7 +230,10 @@ export default function About(props) {
             <span className="block">objectives</span>
           </div>
         </div>
-        <div className="w-1/2 relative h-full grid grid-cols-2 text-white">
+        <p className="lg:hidden text-3xl font-extrabold text-green-dark tracking-tight sm:text-6xl font-header capitalize text-center pb-12 bg-gray-100">
+            Our Objectives
+          </p>
+        <div className="lg:w-1/2 relative h-full grid grid-cols-2 text-white">
           {objectives.map((item) => (
             <div
               className={`h-full px-8 py-8 text-lg bg-${item.color}  flex flex-col space-y-4`}
@@ -249,9 +252,9 @@ export default function About(props) {
               Meet our team
             </h2>
 
-            <ul className="grid grid-cols-2 gap-8">
+            <ul className="lg:grid grid-cols-2 gap-8">
               {data.map((leader) => (
-                <li className="flex flex-col space-y-8 items-center px-4">
+                <li className="flex flex-col space-y-8 mb-12 lg:mb-0 items-center px-4">
                   <div className="relative h-48 w-48 rounded-full border-2 border-gray-200 overflow-hidden">
                     <div className="absolute inset-0 h-full w-full">
                       <img
