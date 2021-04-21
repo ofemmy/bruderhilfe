@@ -10,7 +10,7 @@ export function Navbar(props) {
     { href: "/projects", name: "Projects" },
     { href: "/donate", name: "Donate" },
   ];
-  console.log(props);
+
   return (
     <Disclosure as="nav" className="bg-white shadow">
       {({ open }) => (

@@ -6,6 +6,7 @@ import { CalendarIcon, LocationMarkerIcon } from "@heroicons/react/outline";
 import { groq } from "next-sanity";
 export default function Project(props) {
   const { data } = props;
+
   //   console.log(data["content"][0]);
   return (
     <>
@@ -18,27 +19,27 @@ export default function Project(props) {
           <div className="lg:h-[625px] rounded-lg overflow-hidden">
             <img
               className="h-full w-full object-cover object-top"
-              src={data["coverImage"]}
+              src={data?.coverImage}
               alt="People working on laptops"
             />
           </div>
           <h2 className="font-semibold text-custom-black text-4xl mt-8 uppercase font-header">
-            {data["title"]}
+            {data?.title}
           </h2>
           <div>
             <div className="text-yellow-dark flex items-center space-x-2 mt-6">
               <CalendarIcon height={20} />
               <span className="text-sm ">
-                {new Date(data["date"]).toLocaleDateString()}
+                {new Date(data?.date).toLocaleDateString()}
               </span>
             </div>
             <div className="text-yellow-dark flex items-center space-x-2 mt-3">
               <LocationMarkerIcon height={20} />
-              <span className="text-sm">{data["location"]}</span>
+              <span className="text-sm">{data?.location}</span>
             </div>
           </div>
           <div className="space-y-4 text-gray-700 font-body mt-8">
-            {extractParagraph(data["content"]).map((p) => (
+            {extractParagraph(data?.content)?.map((p) => (
               <p>{p}</p>
             ))}
           </div>
@@ -46,7 +47,7 @@ export default function Project(props) {
             role="list"
             className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-3 xl:gap-x-8 my-16"
           >
-            {data["images"].map((img) => (
+            {data?.images?.map((img) => (
               <div className="focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-yellow-dark block w-full aspect-w-10 aspect-h-7 rounded-lg overflow-hidden">
                 <img
                   src={img}
@@ -92,7 +93,6 @@ export async function getStaticProps(context) {
     context,
     query: projectQuery,
   });
-  console.log(project.data);
   return {
     props: { data: project.data },
   };
