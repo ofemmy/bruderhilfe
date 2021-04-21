@@ -1,5 +1,11 @@
 import Head from "next/head";
-export default function About() {
+import { Navbar } from "../components/Navbar";
+import { groq } from "next-sanity";
+import { sanityStaticProps, useSanityQuery, PortableText } from "lib/sanity";
+import { extractParagraph } from "lib/extractParagraph";
+export default function About(props) {
+  const { data } = props;
+
   const interventionAreas = [
     {
       title: "Education",
@@ -88,7 +94,7 @@ export default function About() {
     },
     {
       title: "3.",
-      color: "gray-800",
+      color: "yellow-dark",
       description:
         "To build the capacity and strengthen the ability of the less privileged and poor people mostly in rural areas to hold governments at all levels and corporate bodies accountable towards enhancing their access to quality services.",
     },
@@ -104,6 +110,7 @@ export default function About() {
       <Head>
         <title>About us | Bruder Hilfe Social Development Initiative</title>
       </Head>
+      <Navbar />
       <section className="relative h-96">
         <div className="absolute inset-0 h-full">
           <img
@@ -123,13 +130,15 @@ export default function About() {
       </section>
       <section className="relative bg-gray-50">
         <div className="absolute inset-x-0 right-1/2 top-0 w-1/2 h-full bg-white"></div>
-        <div className="max-w-7xl mx-auto px-4 py-16 sm:px-6 font-body flex justify-center items-center h-full space-x-4">
-          <div className="w-1/2 relative">
-            <h3 className="font-header text-green-light text-9xl">
-              <span className="block text-center">Who</span>
-              <span className="block text-center">we</span>
-              <span className="block text-center">are</span>
-            </h3>
+        <div className="max-w-7xl mx-auto px-4 py-16 sm:px-6 font-body flex justify-center items-center h-full space-x-8">
+          <div className="w-1/2 relative h-full aspect-w-16 aspect-h-6 rounded-lg shadow-2xl overflow-hidden">
+          
+            <img
+              className="h-full w-full object-cover"
+              src="/whoweare.jpeg"
+              alt="People working on laptops"
+            />
+         
           </div>
           <div className="w-1/2 px-8">
             <p className="text-gray-900 mt-6 text-base">
@@ -169,7 +178,7 @@ export default function About() {
       </section>
       <section className="relative py-16 sm:py-24 bg-gray-100">
         <div className="max-w-7xl mx-auto px-4 text-center sm:px-6 h-full relative">
-          <p className="mt-2 text-3xl font-extrabold text-green-light tracking-tight sm:text-6xl font-header">
+          <p className="mt-2 text-3xl font-extrabold text-green-dark tracking-tight sm:text-6xl font-header">
             Our core values
           </p>
           <div className="mt-12">
@@ -224,7 +233,7 @@ export default function About() {
         <div className="w-1/2 relative h-full grid grid-cols-2 text-white">
           {objectives.map((item) => (
             <div
-              className={`h-full px-8 py-8 text-lg bg-${item.color} flex flex-col space-y-4`}
+              className={`h-full px-8 py-8 text-lg bg-${item.color}  flex flex-col space-y-4`}
               key={item.title}
             >
               <span className="text-6xl font-header">{item.title}</span>
@@ -236,91 +245,56 @@ export default function About() {
       <section className="relative bg-gray-100">
         <div className="max-w-7xl mx-auto px-4 text-center sm:px-6 h-full relative mx-auto py-12 lg:px-8 lg:py-24">
           <div className="space-y-12">
-            <h2 className="text-3xl font-extrabold text-green-light tracking-tight sm:text-6xl font-header">
-              Meet our leadership
+            <h2 className="text-3xl font-extrabold text-green-dark tracking-tight sm:text-6xl font-header">
+              Meet our team
             </h2>
 
             <ul className="grid grid-cols-2 gap-8">
-              <li className="flex flex-col space-y-8 items-center px-4">
-                <div className="relative h-48 w-48 rounded-full border-2 border-gray-200 overflow-hidden">
-                  <div className="absolute inset-0 h-full w-full">
-                    <img
-                      src="mary-bruder.jpeg"
-                      alt=""
-                      className="h-full w-full object-cover object-top"
-                    />
+              {data.map((leader) => (
+                <li className="flex flex-col space-y-8 items-center px-4">
+                  <div className="relative h-48 w-48 rounded-full border-2 border-gray-200 overflow-hidden">
+                    <div className="absolute inset-0 h-full w-full">
+                      <img
+                        src={leader.image}
+                        alt=""
+                        className="h-full w-full object-cover object-top"
+                      />
+                    </div>
                   </div>
-                </div>
 
-                <div className="text-left text-base text-gray-500 space-y-2 font-body">
-                  <p>
-                    <span className="font-semibold text-yellow mr-1">
-                      Mary Oluwabamigbe Bruder
-                    </span>
-                    is a graduate of political science with passionate devotion
-                    to philanthropy and humanitarian work. Mary spent most of
-                    her adult life in the diaspora, with work experience
-                    spanning over two and half decades, consulting for
-                    businesses with a major stake in the shipping and logistic
-                    industry.
-                  </p>
-                  <p>
-                    She is the founder/Executive Director of of BruderHilfe
-                    Social Development initiative an NGO that caters for the
-                    Social and economic development of underserved communities
-                    in Nigeria.Mary registered a parallel organisation in
-                    Germany, equally called Bruderhilfe e.V, to cover her
-                    humanitarian activities in the European Space. Coupled with
-                    her humanitarian work, She doubles as the Managing Director
-                    of PPSS GmbH, a logistic outfit in Berlin, Germany. She was
-                    also two-time treasurer of NIDO-Germany e.V.
-                  </p>
-                  <p>
-                    Mary Bruder is blessed with two daughters - Cynthia and
-                    Olajumoke.
-                  </p>
-                </div>
-              </li>
-              <li className="flex flex-col space-y-8 items-center px-4">
-                <div className="relative h-48 w-48 rounded-full border-2 border-gray-200 overflow-hidden">
-                  <div className="absolute inset-0 h-full w-full">
-                    <img
-                      src="leader-2.jpeg"
-                      alt=""
-                      className="h-full w-full object-cover object-top"
-                    />
+                  <div className="text-left text-base text-gray-700 space-y-2 font-body">
+                    <p className="text-center font-semibold text-green-dark">
+                      {leader.name}{" "}
+                    </p>
+                    <p className="text-center text-sm text-gray-500 pb-4">
+                      {leader.position}
+                    </p>
+                    {extractParagraph(leader.bio).map((item) => (
+                      <p>{item}</p>
+                    ))}
                   </div>
-                </div>
-
-                <div className="text-left text-base text-gray-500 space-y-4 font-body">
-                  <p>
-                    <span className="font-semibold text-yellow mr-1">
-                      Tosin Makinde
-                    </span>
-                    is a graduate of M.Div in Missiology, B.Sc History and
-                    International Studies, ND Mass Communication who specialises
-                    in Social Development Research and Programming. He is a
-                    passionate and trained Development worker in the area of
-                    research and Programming.
-                  </p>
-                  <p>
-                    He is opportuned to have been trained, Volunteered and
-                    worked for different developmental and humanitarian
-                    organisations in the Nigeria. He is presently the Programme
-                    and Research Officer for Bruderhilfe Social Development
-                    Initiative.
-                  </p>
-                  <p>
-                    His interest lies in deploying tested, practical Sustainable
-                    solutions to socio-economic development challenges affecting
-                    the poor and rural populace.
-                  </p>
-                </div>
-              </li>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
       </section>
     </>
   );
+}
+const leadersquery = groq`
+*[_type=='leaders'&& name!="Kemi Asemota"] | order(orderNum){
+  name,
+  position,
+  "bio":bio[].children[],
+  "image":image.asset->url,
+}`;
+export async function getStaticProps(context) {
+  const leaders = await sanityStaticProps({
+    context,
+    query: leadersquery,
+  });
+  return {
+    props: { data: leaders.data },
+  };
 }

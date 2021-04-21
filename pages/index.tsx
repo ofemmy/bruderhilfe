@@ -1,7 +1,13 @@
 import Head from "next/head";
+import Link from "next/link"
 import { Hero } from "@/components/Hero";
+import { sanityStaticProps, useSanityQuery, PortableText } from "lib/sanity";
+import { groq } from "next-sanity";
+import { Navbar } from "../components/Navbar";
+export default function Home(props) {
+  const { data: d, loading, error } = useSanityQuery(query, props);
+  const data = d["data"];
 
-export default function Home() {
   const features = [
     {
       title: "Education",
@@ -48,7 +54,8 @@ export default function Home() {
         <title>Welcome | Bruder Hilfe Social Development Initiative</title>
       </Head>
       <section>
-        <Hero />
+        <Navbar />
+        <Hero hero={data.hero} />
       </section>
       <section className="h-[633px] relative">
         <div className="absolute inset-x-0 left-1/3 top-0 w-full h-full bg-green-light bg-opacity-60"></div>
@@ -81,10 +88,55 @@ export default function Home() {
             </p>
             <a
               href="/about"
-              className="mt-5 w-full inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-bold rounded-md text-white uppercase bg-green-dark hover:bg-yellow sm:w-auto"
+              className="mt-5 w-full inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-bold rounded-md text-white uppercase bg-green-dark hover:bg-green sm:w-auto"
             >
               Learn more
             </a>
+          </div>
+        </div>
+      </section>
+      
+      <section className="h-[633px] relative">
+        <div className="absolute inset-y-0 right-1/3 w-full top-0 h-full bg-custom-black"></div>
+        <div className="max-w-7xl mx-auto px-4 py-32 sm:px-6 font-body flex h-full space-x-8 relative">
+          <div className="w-1/2 h-full">
+            <h2 className="font-header text-4xl text-white uppercase text-yellow">
+              PROJECT K&Aacute;R&Agrave; -K&Aacute;T&Agrave;
+            </h2>
+            <p className="text-gray-300 mt-6 lg:text-md font-body">
+              Project K&aacute;r&agrave; -K&aacute;t&agrave;
+              &#40;K&aacute;r&agrave; -K&aacute;t&agrave; being a Yoruba
+              parlance name for economic and commercial activites that is
+              inclusive&#41; focuses on deploying and implementing practical and
+              sustainable economic empowerment and skill acquisition programmes
+              for 200 women in rural and urban poor communities in Lagos, Ogun
+              and Niger states in Nigeria who have little access to sustainable
+              economic livelihoods.
+            </p>
+            <p className="text-gray-300 mt-6 lg:text-md font-body">
+              The project focuses on deploying interventions that will lead to
+              the drastic reduction of poverty in rural and urban poor
+              communities, ensuring gender equality, ensuring decent work and
+              economic growth for all regardless of sex or status, reduce
+              inequalities at all levels, and partnership between all sectors of
+              the society including the government, private sector, civil
+              society, academia, and local communities.
+            </p>
+            <Link href="/about">
+            <a
+              
+              className="mt-5 w-full inline-flex items-center justify-center px-5 py-3 border border-transparent font-bold text-lg rounded-md text-white uppercase bg-yellow hover:bg-yellow-dark sm:w-auto"
+            >
+              Learn more
+            </a>
+            </Link>
+          </div>
+          <div className="w-1/2 h-full rounded-lg overflow-hidden shadow-2xl ring ring-offset-4 ring-yellow">
+            <img
+              className="h-full w-full object-cover"
+              src="karakata.jpeg"
+              alt="People working on laptops"
+            />
           </div>
         </div>
       </section>
@@ -121,48 +173,20 @@ export default function Home() {
           </ul>
         </div>
       </section>
-      <section className="h-[633px] relative">
-        <div className="absolute inset-y-0 right-1/3 w-full top-0 h-full bg-custom-black"></div>
-        <div className="max-w-7xl mx-auto px-4 py-32 sm:px-6 font-body flex h-full space-x-8 relative">
-          <div className="w-1/2 h-full">
-            <h2 className="font-header text-4xl text-white uppercase text-yellow">
-              PROJECT K&Aacute;R&Agrave; -K&Aacute;T&Agrave;
-            </h2>
-            <p className="text-gray-300 mt-6 lg:text-md font-body">
-              Project K&aacute;r&agrave; -K&aacute;t&agrave;
-              &#40;K&aacute;r&agrave; -K&aacute;t&agrave; being a Yoruba
-              parlance name for economic and commercial activites that is
-              inclusive&#41; focuses on deploying and implementing practical and
-              sustainable economic empowerment and skill acquisition programmes
-              for 200 women in rural and urban poor communities in Lagos, Ogun
-              and Niger states in Nigeria who have little access to sustainable
-              economic livelihoods.
-            </p>
-            <p className="text-gray-300 mt-6 lg:text-md font-body">
-              The project focuses on deploying interventions that will lead to
-              the drastic reduction of poverty in rural and urban poor
-              communities, ensuring gender equality, ensuring decent work and
-              economic growth for all regardless of sex or status, reduce
-              inequalities at all levels, and partnership between all sectors of
-              the society including the government, private sector, civil
-              society, academia, and local communities.
-            </p>
-            <a
-              href="#"
-              className="mt-5 w-full inline-flex items-center justify-center px-5 py-3 border border-transparent font-bold text-lg rounded-md text-white uppercase bg-yellow hover:bg-green-dark sm:w-auto"
-            >
-              Donate
-            </a>
-          </div>
-          <div className="w-1/2 h-full rounded-lg overflow-hidden shadow-2xl ring ring-offset-4 ring-yellow">
-            <img
-              className="h-full w-full object-cover"
-              src="karakata.jpeg"
-              alt="People working on laptops"
-            />
-          </div>
-        </div>
-      </section>
     </>
   );
+}
+// const query = groq`*[_type=='page'&& title=='Home Page']{sections}[0]`;
+const query = groq`*[_type=='page'&& title=='Home Page']{
+  "hero":sections[0]{heading,tagline,backgroundImage{"url":asset->url}},
+ "mission":sections[1]->{cta{title,"route":route->slug.current},title,sectionImage{"url":asset->url},sectionTitle,text}
+ }[0]`;
+export async function getStaticProps(context) {
+  const page = await await sanityStaticProps({ context, query: query });
+
+  return {
+    props: {
+      data: page,
+    },
+  };
 }

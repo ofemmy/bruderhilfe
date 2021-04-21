@@ -1,8 +1,9 @@
-export function Hero() {
+export function Hero({ hero }) {
+  const taglines = hero.tagline.split(".")
   return (
     <div className="relative overflow-hidden lg:h-screen font-header">
       <div className="absolute inset-0">
-        <img className="h-full w-full object-cover" src="hero.jpeg" />
+        <img className="h-full w-full object-cover" src={hero.backgroundImage.url} />
         {/* <div
             className="absolute inset-0 bg-yellow-300"
             style="mix-blend-mode: multiply"
@@ -14,20 +15,13 @@ export function Hero() {
         </h1>
         <div className="mt-2 h-[110px] w-[633px] bg-green-dark bg-opacity-90 flex items-center justify-center py-2 overflow-hidden rounded-md">
           <div className="h-full font-header text-yellow animate-slide px-2">
-            <div className="tracking-tight sm:text-8xl lg:text-8xl font-extrabold uppercase text-center">
-              exclusion
-            </div>
-
-            <div className="tracking-tight sm:text-8xl lg:text-8xl font-extrabold uppercase text-center">
-              discrimination
-            </div>
-
-            <div className="tracking-tight sm:text-8xl lg:text-8xl font-extrabold uppercase text-center">
-              poverty
-            </div>
-            <div className="tracking-tight sm:text-8xl lg:text-8xl font-extrabold uppercase text-center">
-              inequality
-            </div>
+              {
+                  taglines.map(item=>(
+                    <div className="tracking-tight sm:text-8xl lg:text-8xl font-extrabold uppercase text-center">
+                    {item}
+                  </div>
+                  ))
+              }
           </div>
         </div>
       </div>

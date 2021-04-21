@@ -2,13 +2,15 @@ import { Fragment } from "react";
 import Link from "next/link";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
-export function Navbar() {
+export function Navbar(props) {
+  //   console.log(props);
   const links = [
     { href: "/", name: "Home" },
     { href: "/about", name: "About us" },
     { href: "/projects", name: "Projects" },
-    { href: "/volunteer", name: "Volunteer" },
+    { href: "/donate", name: "Donate" },
   ];
+  console.log(props);
   return (
     <Disclosure as="nav" className="bg-white shadow">
       {({ open }) => (
@@ -17,7 +19,7 @@ export function Navbar() {
             <div className="flex justify-between h-24">
               <div className="flex">
                 <div className="flex-shrink-0 flex items-center">
-                  <img src="logo.png" alt="" className="h-8 sm:h-10 w-auto" />
+                  <img src="/logo.png" alt="" className="h-8 sm:h-10 w-auto" />
                 </div>
               </div>
               <div className="hidden sm:flex sm:space-x-4 md:space-x-8">
