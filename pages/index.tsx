@@ -56,21 +56,21 @@ export default function Home(props) {
         <Navbar />
         <Hero hero={data.hero} />
       </section>
-      <section className="h-[633px] relative">
-        <div className="absolute inset-x-0 left-1/3 top-0 w-full h-full bg-green-light bg-opacity-60"></div>
-        <div className="max-w-7xl mx-auto px-4 py-32 sm:px-6 font-body flex justify-center items-center h-full space-x-8 relative">
-          <div className="w-1/2 h-full rounded-lg overflow-hidden shadow-2xl">
+      <section className="md:h-[633px] relative">
+        <div className="absolute inset-x-0 md:left-1/3 top-0 w-full h-full bg-green-light bg-opacity-60"></div>
+        <div className="max-w-7xl px-4 mx-auto py-16 lg:py-24 xl:py-32 sm:px-6 font-body flex justify-center items-center h-full md:space-x-8 relative">
+          <div className="hidden md:block w-1/2 h-full rounded-lg overflow-hidden shadow-2xl">
             <img
               className="h-full w-full object-cover"
               src="mission.jpeg"
-              alt="People working on laptops"
+              alt="People distributing clothes"
             />
           </div>
-          <div className="w-1/2 h-full">
-            <h2 className="font-header text-4xl text-white uppercase">
+          <div className="md:w-1/2 h-full">
+            <h2 className="font-header text-4xl text-green-dark md:text-white uppercase">
               Our Mission
             </h2>
-            <p className="text-green-900 mt-6 lg:text-md">
+            <p className="text-green-900 mt-6 text-base lg:text-md">
               Bruder Hilfe is a charity organization located in Nigeria and
               Germany, dedicated to improving the health, education, of
               children, men and women both in cities and rural areas through
@@ -87,7 +87,7 @@ export default function Home(props) {
             </p>
             <a
               href="/about"
-              className="mt-5 w-full inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-bold rounded-md text-white uppercase bg-green-dark hover:bg-green sm:w-auto"
+              className="mt-5 inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-bold rounded-md text-white uppercase bg-green-dark hover:bg-green sm:w-auto"
             >
               Learn more
             </a>
@@ -95,14 +95,14 @@ export default function Home(props) {
         </div>
       </section>
 
-      <section className="h-[633px] relative">
-        <div className="absolute inset-y-0 right-1/3 w-full top-0 h-full bg-custom-black"></div>
-        <div className="max-w-7xl mx-auto px-4 py-32 sm:px-6 font-body flex h-full space-x-8 relative">
-          <div className="w-1/2 h-full">
-            <h2 className="font-header text-4xl text-white uppercase text-yellow">
+      <section className="lg:h-[633px] relative">
+        <div className="absolute inset-y-0 md:right-1/3 w-full top-0 h-full md:bg-custom-black"></div>
+        <div className="max-w-7xl mx-auto px-4 py-16 lg:py-24 xl:py-32 sm:px-6 font-body flex justify-center h-full space-x-8 relative items-center">
+          <div className="md:w-1/2 h-full">
+            <h2 className="font-header text-4xl text-gray-800 md:text-white uppercase text-yellow">
               PROJECT K&Aacute;R&Agrave; -K&Aacute;T&Agrave;
             </h2>
-            <p className="text-gray-300 mt-6 lg:text-md font-body">
+            <p className="text-gray-700 md:text-gray-300 mt-6 lg:text-md font-body">
               Project K&aacute;r&agrave; -K&aacute;t&agrave;
               &#40;K&aacute;r&agrave; -K&aacute;t&agrave; being a Yoruba
               parlance name for economic and commercial activites that is
@@ -112,7 +112,7 @@ export default function Home(props) {
               and Niger states in Nigeria who have little access to sustainable
               economic livelihoods.
             </p>
-            <p className="text-gray-300 mt-6 lg:text-md font-body">
+            <p className="text-gray-700 md:text-gray-300 mt-6 lg:text-md font-body">
               The project focuses on deploying interventions that will lead to
               the drastic reduction of poverty in rural and urban poor
               communities, ensuring gender equality, ensuring decent work and
@@ -122,12 +122,12 @@ export default function Home(props) {
               society, academia, and local communities.
             </p>
             <Link href="/about">
-              <a className="mt-5 w-full inline-flex items-center justify-center px-5 py-3 border border-transparent font-bold text-lg rounded-md text-white uppercase bg-yellow hover:bg-yellow-dark sm:w-auto">
+              <a className="mt-5 inline-flex items-center justify-center px-5 py-3 border border-transparent font-bold text-lg rounded-md text-white uppercase bg-yellow hover:bg-yellow-dark sm:w-auto">
                 Learn more
               </a>
             </Link>
           </div>
-          <div className="w-1/2 h-full rounded-lg overflow-hidden shadow-2xl ring ring-offset-4 ring-yellow">
+          <div className="hidden md:block w-1/2 h-full rounded-lg overflow-hidden shadow-2xl">
             <img
               className="h-full w-full object-cover"
               src="karakata.jpeg"
