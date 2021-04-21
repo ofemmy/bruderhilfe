@@ -5,8 +5,7 @@ import { extractParagraph } from "lib/extractParagraph";
 import { CalendarIcon, LocationMarkerIcon } from "@heroicons/react/outline";
 import { groq } from "next-sanity";
 export default function Project(props) {
-  console.log({ props });
-  let data;
+  const { data } = props;
   //   console.log(data["content"][0]);
   return (
     <>
@@ -16,7 +15,7 @@ export default function Project(props) {
       <Navbar />
       <section className="mb-16">
         <div className="max-w-7xl mx-auto px-4 mt-4 sm:px-6 font-body h-full relative">
-          <div className="h-[625px] rounded-lg overflow-hidden">
+          <div className="lg:h-[625px] rounded-lg overflow-hidden">
             <img
               className="h-full w-full object-cover object-top"
               src={data["coverImage"]}

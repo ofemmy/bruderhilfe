@@ -26,7 +26,7 @@ export default function Projects(props) {
             style={{ mixBlendMode: "multiply" }}
           ></div>
         </div>
-        <h2 className="absolute left-28 bottom-4 shadow-4xl text-6xl text-yellow font-header capitalize z-10">
+        <h2 className="hidden lg:block absolute left-28 bottom-4 shadow-4xl text-6xl text-yellow font-header capitalize z-10">
           Our Projects
         </h2>
       </section>
