@@ -141,7 +141,7 @@ export default function Home(props) {
           <h2 className="font-header text-4xl text-gray-900 uppercase text-center">
             Our Thematic areas
           </h2>
-          <ul className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8 mt-16">
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8 mt-16">
             {features.map((feature) => (
               <li className="relative">
                 <div className="focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-green-light group block w-full aspect-w-10 aspect-h-7 rounded-lg overflow-hidden">
