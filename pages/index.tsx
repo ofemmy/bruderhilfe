@@ -1,12 +1,11 @@
 import Head from "next/head";
-import Link from "next/link"
+import Link from "next/link";
 import { Hero } from "@/components/Hero";
 import { sanityStaticProps, useSanityQuery, PortableText } from "lib/sanity";
 import { groq } from "next-sanity";
 import { Navbar } from "../components/Navbar";
 export default function Home(props) {
-  const { data: d, loading, error } = useSanityQuery(query, props);
-  const data = d["data"];
+  const { data } = props;
 
   const features = [
     {
@@ -95,7 +94,7 @@ export default function Home(props) {
           </div>
         </div>
       </section>
-      
+
       <section className="h-[633px] relative">
         <div className="absolute inset-y-0 right-1/3 w-full top-0 h-full bg-custom-black"></div>
         <div className="max-w-7xl mx-auto px-4 py-32 sm:px-6 font-body flex h-full space-x-8 relative">
@@ -123,12 +122,9 @@ export default function Home(props) {
               society, academia, and local communities.
             </p>
             <Link href="/about">
-            <a
-              
-              className="mt-5 w-full inline-flex items-center justify-center px-5 py-3 border border-transparent font-bold text-lg rounded-md text-white uppercase bg-yellow hover:bg-yellow-dark sm:w-auto"
-            >
-              Learn more
-            </a>
+              <a className="mt-5 w-full inline-flex items-center justify-center px-5 py-3 border border-transparent font-bold text-lg rounded-md text-white uppercase bg-yellow hover:bg-yellow-dark sm:w-auto">
+                Learn more
+              </a>
             </Link>
           </div>
           <div className="w-1/2 h-full rounded-lg overflow-hidden shadow-2xl ring ring-offset-4 ring-yellow">
@@ -186,7 +182,7 @@ export async function getStaticProps(context) {
 
   return {
     props: {
-      data: page,
+      data: page.data,
     },
   };
 }
